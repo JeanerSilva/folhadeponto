@@ -1,0 +1,692 @@
+{
+	"info": {
+		"_postman_id": "0863c3bd-d24b-4746-bc12-0210a541ada3",
+		"name": "folha-de-ponto",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "3520600"
+	},
+	"item": [
+		{
+			"name": "batidas",
+			"item": [
+				{
+					"name": "batidas | campo obrigatório",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"response value\", function () {\r",
+									"    var expected_json = {\r",
+									"        \"mensagem\": \"Campo obrigatório não informado\"\r",
+									"    };\r",
+									"\r",
+									"    pm.expect(pm.response.text()).to.be.equal(JSON.stringify(expected_json))\r",
+									"});\r",
+									"\r",
+									"pm.test(\"status code\", function () {\r",
+									"    pm.expect(pm.response.code).to.be.equal(400);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/batidas",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"batidas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "batidas | campo obrigatório JSON vazio",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"response value\", function () {\r",
+									"    var expected_json = {\r",
+									"        \"mensagem\": \"Campo obrigatório não informado\"\r",
+									"    };\r",
+									"\r",
+									"    pm.expect(pm.response.text()).to.be.equal(JSON.stringify(expected_json))\r",
+									"});\r",
+									"\r",
+									"pm.test(\"status code\", function () {\r",
+									"    pm.expect(pm.response.code).to.be.equal(400);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/batidas",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"batidas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "batidas | data em formato inválido 3",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"response value\", function () {\r",
+									"    var expected_json = {\r",
+									"        \"mensagem\": \"Data e hora em formato inválido\"\r",
+									"    };\r",
+									"\r",
+									"    pm.expect(pm.response.text()).to.be.equal(JSON.stringify(expected_json))\r",
+									"});\r",
+									"\r",
+									"pm.test(\"status code\", function () {\r",
+									"    pm.expect(pm.response.code).to.be.equal(400);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"dataHora\": \"2018\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/batidas",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"batidas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "batidas | data em formato inválido 1",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"response value\", function () {\r",
+									"    var expected_json = {\r",
+									"        \"mensagem\": \"Data e hora em formato inválido\"\r",
+									"    };\r",
+									"\r",
+									"    pm.expect(pm.response.text()).to.be.equal(JSON.stringify(expected_json))\r",
+									"});\r",
+									"\r",
+									"pm.test(\"status code\", function () {\r",
+									"    pm.expect(pm.response.code).to.be.equal(400);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"dataHora\": \"2018-08-22\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/batidas",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"batidas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "batidas | data em formato inválido 2",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"response value\", function () {\r",
+									"    var expected_json = {\r",
+									"        \"mensagem\": \"Data e hora em formato inválido\"\r",
+									"    };\r",
+									"\r",
+									"    pm.expect(pm.response.text()).to.be.equal(JSON.stringify(expected_json))\r",
+									"});\r",
+									"\r",
+									"pm.test(\"status code\", function () {\r",
+									"    pm.expect(pm.response.code).to.be.equal(400);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"dataHora\": \"a\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/batidas",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"batidas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "batidas | sábado não é permitido",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"response value\", function () {\r",
+									"    var expected_json = {\r",
+									"        \"mensagem\": \"Sábado e domingo não são permitidos como dia de trabalho\"\r",
+									"    };\r",
+									"\r",
+									"    pm.expect(pm.response.text()).to.be.equal(JSON.stringify(expected_json))\r",
+									"});\r",
+									"\r",
+									"pm.test(\"status code\", function () {\r",
+									"    pm.expect(pm.response.code).to.be.equal(403);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"dataHora\": \"2021-06-12T08:00:00\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/batidas",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"batidas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "batidas | domingo não é permitido",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"response value\", function () {\r",
+									"    var expected_json = {\r",
+									"        \"mensagem\": \"Sábado e domingo não são permitidos como dia de trabalho\"\r",
+									"    };\r",
+									"\r",
+									"    pm.expect(pm.response.text()).to.be.equal(JSON.stringify(expected_json))\r",
+									"});\r",
+									"\r",
+									"pm.test(\"status code\", function () {\r",
+									"    pm.expect(pm.response.code).to.be.equal(403);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"dataHora\": \"2021-06-13T08:00:00\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/batidas",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"batidas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "batidas | horário já registrado",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"response value\", function () {\r",
+									"    var expected_json = {\r",
+									"        \"mensagem\": \"Horário já registrado\"\r",
+									"    };\r",
+									"\r",
+									"    pm.expect(pm.response.text()).to.be.equal(JSON.stringify(expected_json))\r",
+									"});\r",
+									"\r",
+									"pm.test(\"status code\", function () {\r",
+									"    pm.expect(pm.response.code).to.be.equal(409);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.sendRequest({\r",
+									"    url: \"http://localhost:8080/batidas\",\r",
+									"    method: \"POST\",\r",
+									"    header: {\r",
+									"        \"Content-Type\": \"application/json\"\r",
+									"    },\r",
+									"    body: {\r",
+									"        mode: \"raw\",\r",
+									"        raw: JSON.stringify({\r",
+									"            \"dataHora\": \"2021-06-14T08:00:00\"\r",
+									"        })\r",
+									"    }\r",
+									"}, function (err, res) {\r",
+									"\r",
+									"    setTimeout(function () {\r",
+									"        console.log(\"Sleeping for 3 seconds before next request.\");\r",
+									"    }, 3000);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"dataHora\": \"2021-06-14T08:00:00\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/batidas",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"batidas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "batidas | apenas 4 horários",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"response value\", function () {\r",
+									"    var expected_json = {\r",
+									"        \"mensagem\": \"Apenas 4 horários podem ser registrados por dia\"\r",
+									"    };\r",
+									"\r",
+									"    pm.expect(pm.response.text()).to.be.equal(JSON.stringify(expected_json))\r",
+									"});\r",
+									"\r",
+									"pm.test(\"status code\", function () {\r",
+									"    pm.expect(pm.response.code).to.be.equal(403);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.sendRequest({\r",
+									"    url: \"http://localhost:8080/batidas\",\r",
+									"    method: \"POST\",\r",
+									"    header: {\r",
+									"        \"Content-Type\": \"application/json\"\r",
+									"    },\r",
+									"    body: {\r",
+									"        mode: \"raw\",\r",
+									"        raw: JSON.stringify({\r",
+									"            \"dataHora\": \"2021-06-17T08:00:00\"\r",
+									"        })\r",
+									"    }\r",
+									"}, function (err, res) {\r",
+									"\r",
+									"    pm.sendRequest({\r",
+									"        url: \"http://localhost:8080/batidas\",\r",
+									"        method: \"POST\",\r",
+									"        header: {\r",
+									"            \"Content-Type\": \"application/json\"\r",
+									"        },\r",
+									"        body: {\r",
+									"            mode: \"raw\",\r",
+									"            raw: JSON.stringify({\r",
+									"                \"dataHora\": \"2021-06-17T12:00:00\"\r",
+									"            })\r",
+									"        }\r",
+									"    }, function (err, res) {\r",
+									"\r",
+									"        pm.sendRequest({\r",
+									"            url: \"http://localhost:8080/batidas\",\r",
+									"            method: \"POST\",\r",
+									"            header: {\r",
+									"                \"Content-Type\": \"application/json\"\r",
+									"            },\r",
+									"            body: {\r",
+									"                mode: \"raw\",\r",
+									"                raw: JSON.stringify({\r",
+									"                    \"dataHora\": \"2021-06-17T13:00:00\"\r",
+									"                })\r",
+									"            }\r",
+									"        }, function (err, res) {\r",
+									"            pm.sendRequest({\r",
+									"                url: \"http://localhost:8080/batidas\",\r",
+									"                method: \"POST\",\r",
+									"                header: {\r",
+									"                    \"Content-Type\": \"application/json\"\r",
+									"                },\r",
+									"                body: {\r",
+									"                    mode: \"raw\",\r",
+									"                    raw: JSON.stringify({\r",
+									"                        \"dataHora\": \"2021-06-17T18:00:00\"\r",
+									"                    })\r",
+									"                }\r",
+									"            }, function (err, res) {\r",
+									"\r",
+									"                setTimeout(function () {\r",
+									"                    console.log(\"Sleeping for 3 seconds before next request.\");\r",
+									"                }, 3000);\r",
+									"            });\r",
+									"        });\r",
+									"    });\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"dataHora\": \"2021-06-17T20:00:00\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/batidas",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"batidas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "batidas | mínimo 1h de almoço",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"response value\", function () {\r",
+									"    var expected_json = {\r",
+									"        \"mensagem\": \"Deve haver no mínimo 1 hora de almoço\"\r",
+									"    };\r",
+									"\r",
+									"    pm.expect(pm.response.text()).to.be.equal(JSON.stringify(expected_json))\r",
+									"});\r",
+									"\r",
+									"pm.test(\"status code\", function () {\r",
+									"    pm.expect(pm.response.code).to.be.equal(403);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.sendRequest({\r",
+									"    url: \"http://localhost:8080/batidas\",\r",
+									"    method: \"POST\",\r",
+									"    header: {\r",
+									"        \"Content-Type\": \"application/json\"\r",
+									"    },\r",
+									"    body: {\r",
+									"        mode: \"raw\",\r",
+									"        raw: JSON.stringify({\r",
+									"            \"dataHora\": \"2021-06-16T08:00:00\"\r",
+									"        })\r",
+									"    }\r",
+									"}, function (err, res) {\r",
+									"\r",
+									"    pm.sendRequest({\r",
+									"        url: \"http://localhost:8080/batidas\",\r",
+									"        method: \"POST\",\r",
+									"        header: {\r",
+									"            \"Content-Type\": \"application/json\"\r",
+									"        },\r",
+									"        body: {\r",
+									"            mode: \"raw\",\r",
+									"            raw: JSON.stringify({\r",
+									"                \"dataHora\": \"2021-06-16T12:00:00\"\r",
+									"            })\r",
+									"        }\r",
+									"    }, function (err, res) {\r",
+									"\r",
+									"        setTimeout(function () {\r",
+									"            console.log(\"Sleeping for 3 seconds before next request.\");\r",
+									"        }, 3000);\r",
+									"    });\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"dataHora\": \"2021-06-16T12:59:00\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/batidas",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"batidas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "batidas",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"status code\", function () {\r",
+									"    pm.expect(pm.response.code).to.be.equal(201);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"dataHora\": \"2021-06-21T01:00:00\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/batidas",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"batidas"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
