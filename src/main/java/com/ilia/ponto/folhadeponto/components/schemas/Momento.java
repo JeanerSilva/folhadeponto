@@ -23,8 +23,9 @@ public class Momento {
     @Column(name = "id")
     private Integer id; 
 
-    @Column(name = "datahora", length = 200)
-    @NotEmptyField
-    @DataFormat    
+    
+   // @NotEmptyField
+   // @DataFormat
+   @Column(name = "datahora", length = 200)    
     private String dataHora;
 }
