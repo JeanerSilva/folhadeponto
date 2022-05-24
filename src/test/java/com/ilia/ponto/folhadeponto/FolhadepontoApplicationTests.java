@@ -1,9 +1,11 @@
 package com.ilia.ponto.folhadeponto;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import javax.validation.ConstraintViolationException;
+import javax.validation.ValidationException;
 
 import com.ilia.ponto.folhadeponto.components.schemas.Momento;
 import com.ilia.ponto.folhadeponto.repository.Momentos;
@@ -30,7 +32,7 @@ class FolhadepontoApplicationTests {
     
         String expectedMessage = "Data e hora em formato inválido";
         String actualMessage = exception.getMessage();
-    
+		//assertEquals(expectedMessage, actualMessage);
         assertTrue(actualMessage.contains(expectedMessage));
     }
 
