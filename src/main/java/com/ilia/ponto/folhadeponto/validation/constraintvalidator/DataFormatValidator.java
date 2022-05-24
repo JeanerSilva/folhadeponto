@@ -13,6 +13,7 @@ import com.ilia.ponto.folhadeponto.validation.DataFormat;
 public class DataFormatValidator
         implements ConstraintValidator<DataFormat, String> {
 
+            
     @Override
     public boolean isValid(String field,
             ConstraintValidatorContext constraintValidatorContext) {

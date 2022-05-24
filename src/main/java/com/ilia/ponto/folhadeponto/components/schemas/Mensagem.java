@@ -8,11 +8,13 @@ import javax.persistence.Id;
 
 import com.ilia.ponto.folhadeponto.validation.NotEmptyField;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 
 @NoArgsConstructor
+@AllArgsConstructor
 @Data
 @Entity
 public class Mensagem {
