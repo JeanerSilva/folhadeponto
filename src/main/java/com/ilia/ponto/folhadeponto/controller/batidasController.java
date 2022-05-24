@@ -42,7 +42,6 @@ public class BatidasController {
             @ApiResponse(code = 409, message = MensagemInterface.DOUBLE_REGISTER)
     })
     public ResponseEntity<Mensagem> save(@RequestBody @Valid Momento momento) {
-        System.out.println("Momento: ============ " + momento);
         boolean allFieldsInformed = 
             verifyMandadotyFieldPresent(momento.getDataHora());
         
