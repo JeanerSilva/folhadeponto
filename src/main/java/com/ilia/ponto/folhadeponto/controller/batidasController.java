@@ -43,7 +43,6 @@ public class BatidasController {
     private Momentos momentos;
 
     @PostMapping
-    @ResponseStatus(CREATED)
     @ApiOperation("Salva um novo ponto")
     @ApiResponses({
             @ApiResponse(code = 201, message = MensagemInterface.CHECKIN),
@@ -54,7 +53,10 @@ public class BatidasController {
             @ApiResponse(code = 409, message = MensagemInterface.DOUBLE_REGISTER)
     })
     public ResponseEntity<Mensagem> save(@RequestBody @Valid Momento momento) {
-
+        System.out.println("Momento: ============ " + momento);
+        boolean allFieldsInformed = 
+            verifyMandadotyFieldPresent(momento.getDataHora());
+        
         Momento momentoSalvo = new Momento();
         Mensagem mensagem = new Mensagem();
         boolean entrySaved = false;
@@ -62,7 +64,7 @@ public class BatidasController {
         boolean thereIsAtLeastOneLunchTime = verifyLunchTime();
         boolean itIsNotWeekend = verifyItIsNotWeekend(momento.getDataHora());
         boolean correctDataFormat = verifiyDataFormatIsOk(momento.getDataHora());
-        boolean allFieldsInformed = verifyMandadotyFieldPresent(momento.getDataHora());
+        
         boolean horarioAindaNaoRegistrado = verifyHoarioJaRegistrado(momento.getDataHora());
 
         boolean entryCanBeSaved = isNotThereFourEntriesSameDay
@@ -124,6 +126,7 @@ public class BatidasController {
     }
 
     private boolean verifyMandadotyFieldPresent(String dataHora) {
+        System.out.println("dataHora ===========:" + dataHora);
         return dataHora != null && !dataHora.isEmpty();
     }
 
@@ -147,7 +150,6 @@ public class BatidasController {
 
     private boolean verifyMaxEntries(Integer entry, String dataHora) {
         String dataString = dataHora.substring(0, 10);
-        System.out.println("dataString: =============" + dataString);
         return numEntriesSameDay(dataString).size() < entry;
     }
 
@@ -155,28 +157,5 @@ public class BatidasController {
         return momentos.findByDataHora(dataHora);
     }
 
-    @GetMapping("/t")
-    public boolean find(@RequestBody Momento filtro) {
-
-        ExampleMatcher matcher = ExampleMatcher
-                .matching()
-                .withIgnoreCase()
-                .withStringMatcher(
-                        ExampleMatcher.StringMatcher.CONTAINING);
-
-        Example example = Example.of(filtro, matcher);
-        return momentos.findAll(example).size() <= 4;
-
-    }
-
-    @GetMapping("/t2")
-    public boolean lista() {
-        return verifyMaxEntries(4, "2018-08-21T08:11:00");
-    }
-
-    @GetMapping("/t3")
-    public List<Momento> lista3() {
-        return momentos.findAll();
-    }
 
 }

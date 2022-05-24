@@ -7,6 +7,16 @@ import java.util.List;
 public class ApiErrors {
 
     @Getter
+    private String mensagem;
+
+    public ApiErrors(String mensagem) {
+        this.mensagem = mensagem;
+    }
+
+}
+
+/*
+ @Getter
     private List<String> errors;
 
     public ApiErrors(List<String> errors) {
@@ -16,4 +26,4 @@ public class ApiErrors {
     public ApiErrors(String mensagemErro){
         this.errors = Arrays.asList(mensagemErro);
     }
-}
+*/

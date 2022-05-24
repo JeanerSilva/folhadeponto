@@ -11,11 +11,13 @@ import com.ilia.ponto.folhadeponto.validation.NotEmptyField;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
 @Entity
+@ToString
 public class Momento {   
 
     @Id
@@ -24,8 +26,8 @@ public class Momento {
     private Integer id; 
 
     
-   // @NotEmptyField
-   // @DataFormat
+   @NotEmptyField
+   @DataFormat
    @Column(name = "datahora", length = 200)    
     private String dataHora;
 }
