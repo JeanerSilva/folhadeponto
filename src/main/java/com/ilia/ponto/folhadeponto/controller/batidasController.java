@@ -2,6 +2,7 @@ package com.ilia.ponto.folhadeponto.controller;
 
 import javax.validation.Valid;
 
+import com.ilia.ponto.folhadeponto.components.schemas.Mensagem;
 import com.ilia.ponto.folhadeponto.components.schemas.Momento;
 import com.ilia.ponto.folhadeponto.repository.Momentos;
 
@@ -36,12 +37,12 @@ public class batidasController {
     @ResponseStatus(CREATED)
     @ApiOperation("Salva um novo ponto")
     @ApiResponses({
-            @ApiResponse(code = 201, message = "Batida de ponto registrada"),
-            @ApiResponse(code = 400, message = "Data e hora em formato inválido"),
-            @ApiResponse(code = 403, message = "Apenas 4 horários podem ser registrados por dia"),
-            @ApiResponse(code = 403, message = "Deve haver no mínimo 1 hora de almoço"),
-            @ApiResponse(code = 403, message = "Sábado e domingo não são permitidos como dia de trabalho"),
-            @ApiResponse(code = 409, message = "Horários já registrado")            
+            @ApiResponse(code = 201, message = Mensagem.CHECKIN),
+            @ApiResponse(code = 400, message = Mensagem.DATA_FORMAT_ERROR),
+            @ApiResponse(code = 403, message = Mensagem.MAX_REGISTRY),
+            @ApiResponse(code = 403, message = Mensagem.LUNCH_MININAL_INTERVAL),
+            @ApiResponse(code = 403, message = Mensagem.NO_WEEKEND_JOB),
+            @ApiResponse(code = 409, message = Mensagem.DOUBLE_REGISTER)            
     })
     
     public Momento save( @RequestBody @Valid Momento momento ){
