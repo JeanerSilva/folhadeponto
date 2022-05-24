@@ -1,30 +1,22 @@
 package com.ilia.ponto.folhadeponto.components.schemas;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+public enum Mensagem {
 
-import com.ilia.ponto.folhadeponto.validation.NotEmptyField;
+	DATA_FORMAT_ERROR("Data e hora em formato inválido"),
+    NO_DEFAUL_FIELD("Campo obrigatório não informado"),
+    MAX_REGISTRY("Apenas 4 horários podem ser registrados por dia"),
+    LUNCH_MININAL_INTERVAL("Deve haver no mínimo 1 hora de almoço"),
+    NO_WEEKEND_JOB("Sábado e domingo não são permitidos como dia de trabalho"),
+    DOUBLE_REGISTER("Horários já registrado");
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+    private String descricao;
 
+    Mensagem(String descricao) {
+        this.descricao = descricao;
+    }
 
-@NoArgsConstructor
-@AllArgsConstructor
-@Data
-@Entity
-public class Mensagem {
+    public String getDescricao() {
+        return descricao;
+    }
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private Integer id;
-
-    @Column(name = "mensagem", length = 200)
-    @NotEmptyField
-    private String mensagem;
 }

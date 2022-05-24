@@ -48,7 +48,7 @@ public class batidasController {
         return momentos.save(momento);
     }
 
-    @GetMapping
+    @GetMapping("/t")
     public boolean find( @RequestBody Momento filtro ){
 
         ExampleMatcher matcher = ExampleMatcher
@@ -58,9 +58,21 @@ public class batidasController {
                                             ExampleMatcher.StringMatcher.CONTAINING );
 
         Example example = Example.of(filtro, matcher);
-        return momentos.findAll(example).size() >= 4;
+        return momentos.findAll(example).size() <= 4;
+   
+    }
 
-}
+
+    @GetMapping("/t2")
+    public List<Momento> lista(  ){
+        return momentos.findByDataHora("2018-08-22");
+    }
+
+    @GetMapping("/t3")
+    public List<Momento> lista3(  ){
+        return momentos.findAll();
+    }
+
 }
 
 

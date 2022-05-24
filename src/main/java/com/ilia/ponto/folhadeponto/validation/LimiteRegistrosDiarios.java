@@ -1,8 +1,8 @@
 package com.ilia.ponto.folhadeponto.validation;
 
+import com.ilia.ponto.folhadeponto.validation.constraintvalidator.LimiteRegistrosDiariosValidator;
 import javax.validation.Constraint;
 import javax.validation.Payload;
-import com.ilia.ponto.folhadeponto.validation.constraintvalidator.LimiteRegistrosDiariosValidator;
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
