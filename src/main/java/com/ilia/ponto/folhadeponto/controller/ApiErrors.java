@@ -1,8 +1,6 @@
 package com.ilia.ponto.folhadeponto.controller;
 
 import lombok.Getter;
-import java.util.Arrays;
-import java.util.List;
 
 public class ApiErrors {
 

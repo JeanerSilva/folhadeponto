@@ -30,8 +30,8 @@ public class ApplicationControllerAdvice {
     @ExceptionHandler(MethodArgumentNotValidException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public ApiErrors handleMethodNotValidException( MethodArgumentNotValidException ex ){
-        String mensagem = ex.getBindingResult().getFieldError().getDefaultMessage();
-        return new ApiErrors(mensagem);
+        String mensagem2 = ex.getBindingResult().getFieldError().getDefaultMessage();
+        return new ApiErrors(mensagem2);
     }
 
 
