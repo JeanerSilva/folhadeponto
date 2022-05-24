@@ -18,9 +18,11 @@ import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.time.format.ResolverStyle;
+import java.time.temporal.ChronoUnit;
 import java.util.List;
 
 @RestController
@@ -49,7 +51,7 @@ public class BatidasController {
         Mensagem mensagem = new Mensagem();
         boolean entrySaved = false;
         boolean isNotThereFourEntriesSameDay = verifyMaxEntries(4, momento.getDataHora());
-        boolean thereIsAtLeastOneLunchTime = verifyLunchTime();
+        boolean thereIsAtLeastOneLunchTime = verifyLunchTime( momento.getDataHora());
         boolean itIsNotWeekend = verifyItIsNotWeekend(momento.getDataHora());
         boolean correctDataFormat = verifiyDataFormatIsOk(momento.getDataHora());
         
@@ -109,12 +111,37 @@ public class BatidasController {
         }
     }
 
-    private boolean verifyLunchTime() {
-        return true;
+    private boolean verifyLunchTime(String dataHora) {
+
+        String dataString = dataHora.substring(0, 10);
+        List<Momento> momentos = numEntriesSameDay(dataString);
+        
+
+        if (momentos.size() < 2) {
+            return true;
+        } else {
+            String startLunch = momentos.get(1).getDataHora();
+            String endLunch = dataHora;
+
+            String dateFormat = "uuuu-MM-dd'T'HH:mm:ss";
+            DateTimeFormatter dateTimeFormatter = DateTimeFormatter
+                    .ofPattern(dateFormat)
+                    .withResolverStyle(ResolverStyle.STRICT);
+            LocalDateTime date = LocalDateTime.parse(startLunch, dateTimeFormatter);
+            LocalDateTime date2 = LocalDateTime.parse(endLunch, dateTimeFormatter);
+            long diff = ChronoUnit.MINUTES.between(date, date2);
+
+            System.out.println("Date1 ============= :" + date);
+            System.out.println("Date2 ============= :" + date2);
+            System.out.println("diff ============= :" + diff);
+
+            return diff < 60 ? false : true;
+        }
+
+       
     }
 
     private boolean verifyMandadotyFieldPresent(String dataHora) {
-        System.out.println("dataHora ===========:" + dataHora);
         return dataHora != null && !dataHora.isEmpty();
     }
 
