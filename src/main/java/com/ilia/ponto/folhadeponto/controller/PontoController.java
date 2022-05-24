@@ -30,7 +30,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/batidas")
 @Api("Api Batidas")
-public class BatidasController {
+public class PontoController {
 
     @Autowired
     private Momentos momentos;
@@ -59,20 +59,25 @@ public class BatidasController {
         
         boolean horarioAindaNaoRegistrado = verifyHoarioJaRegistrado(momento.getDataHora());
 
-        boolean entryCanBeSaved = isNotThereFourEntriesSameDay
-                && thereIsAtLeastOneLunchTime
-                && itIsNotWeekend
-                && correctDataFormat
-                && allFieldsInformed
+        boolean entryCanBeSaved = 
+                    isNotThereFourEntriesSameDay
+                &&  thereIsAtLeastOneLunchTime
+                &&  itIsNotWeekend
+                &&  correctDataFormat
+                &&  allFieldsInformed
                 && horarioAindaNaoRegistrado;
 
         HttpStatus statusCode ;
 
         if (entryCanBeSaved) {
+            try {
             momentoSalvo = momentos.save(momento);
             if (momentoSalvo.getId() > 0) {
                 entrySaved = true;
             }
+        } catch (Exception e) {
+            mensagem.setMensagem(e.toString());
+        }
 
             statusCode = HttpStatus.CREATED;
         } else {
