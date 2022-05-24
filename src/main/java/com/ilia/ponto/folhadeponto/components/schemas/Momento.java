@@ -7,7 +7,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 import com.ilia.ponto.folhadeponto.validation.DataFormat;
-import com.ilia.ponto.folhadeponto.validation.LimiteRegistrosDiarios;
 import com.ilia.ponto.folhadeponto.validation.NotEmptyField;
 
 import lombok.AllArgsConstructor;
@@ -28,6 +27,5 @@ public class Momento {
     @Column(name = "datahora", length = 200)
     @NotEmptyField
     @DataFormat
-    @LimiteRegistrosDiarios
     private String dataHora;
 }
